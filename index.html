@@ -17,8 +17,19 @@
 
 <body>
     <p>Introduzca las dimensiones del área de juego:</p>
-    <input id="inputRows" type="number" placeholder="rows">
-    <input id="inputCols" type="number" placeholder="cols">
+    <select id="opcions" onchange="comprobarOpcions">
+        <option value="9-9-10" selected="selected">9x9, 10 mines</option>
+        <option value="9-9-35">9x9, 35 mines</option>
+        <option value="16-16-99">16x16, 99 mines</option>
+        <option value="30-16-99">30x16, 99 mines</option>
+        <option value="30-16-170">30x16, 170 mines</option>
+        <option value="personalitzat">personalitzat</option>
+    </select>
+    <div id="jocPersonalizat" style="display: none;">
+        <input id="inputRows" type="number" placeholder="rows">
+        <input id="inputCols" type="number" placeholder="cols">
+        <input id="inputMines" type="number" placeholder="mines">
+    </div>
     <button id="inicialitzar" onclick="inicialitzaJoc()">Inicializar</button>
 
     <div id="afegirPuntuacio" style="display: none;">

@@ -2,12 +2,14 @@ let mines = [];
 let minesPosicio = [];
 let rows = 0;
 let cols = 0;
-let numMines = 5;
+let numMines = 1;
 let minesMarcades = 0;
 let temps = 0;
 let tempsInterval = null;
 let puntuacio = 0;
 let puntuacions = [];
+
+document.getElementById('opcions').addEventListener('change', comprobarOpcions);
 
 let puntuacionsAlmacenades = localStorage.getItem('puntuacions');
 
@@ -19,6 +21,7 @@ if(puntuacionsAlmacenades) {
   });
 }
 
+
 function inicialitzaJoc() {
   document.getElementById('Taula').innerHTML = '';
   document.getElementById('Taula').style.pointerEvents = "all";
@@ -28,8 +31,22 @@ function inicialitzaJoc() {
   puntuacio = 0;
 
   // Obtenir les dimensions de l'àrea de joc dels inputs
-  rows = document.getElementById('inputRows').value;
-  cols = document.getElementById('inputCols').value;
+  const opcio = document.getElementById('opcions').value;
+
+  if(opcio == 'personalitzat') {
+    rows = document.getElementById('inputRows').value;
+    cols = document.getElementById('inputCols').value;
+    numMines = document.getElementById('inputMines').value;
+
+    if(numMines > (rows * cols)) {
+      numMines = (row * cols) - 1;
+    }
+  } else {
+    opcioValors = opcio.split('-');
+    rows = parseInt(opcioValors[0]);
+    cols = parseInt(opcioValors[1]);
+    numMines = parseInt(opcioValors[2]);
+  }
 
   // Crear la taula
   let taula = document.createElement('table');
@@ -54,6 +71,16 @@ function inicialitzaJoc() {
 
   //contador de temps
   tempsInterval = setInterval(contadorTemps, 1000)
+}
+
+function comprobarOpcions(event) {
+  console.log(event.target.value);
+
+  if(event.target.value == 'personalitzat') {
+    document.getElementById('jocPersonalizat').style.display = 'inline-block';
+  } else {
+    document.getElementById('jocPersonalizat').style.display = 'none';
+  }
 }
 
 function matriuBinaria(matrix) {
