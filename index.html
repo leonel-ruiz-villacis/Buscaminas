@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <style>
+        #Taula td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Introduzca las dimensiones del área de juego:</p>
+    <input id="inputRows" type="number" placeholder="rows">
+    <input id="inputCols" type="number" placeholder="cols">
+    <button id="inicialitzar" onclick="inicialitzaJoc()">Inicializar</button>
+
+    <div id="afegirPuntuacio" style="display: none;">
+        <input id="nom" type="text" placeholder="Nom">
+        <button onclick="finatlitzarJoc()">Afegir Puntuació</button>
+    </div>
+
+    <div id="temps"></div>
+    <div id="missatgeFi"></div>
+    <div id="Taula"></div>
+    <div>
+        <h5>Puntuacions</h5>
+        <table id="puntuacions"></table>
+    </div>
+    
+</body>
+<script src="buscaminas.js"></script>
+</html>
